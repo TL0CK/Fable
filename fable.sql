@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 28 Février 2018 à 14:32
+-- Généré le :  Mer 28 Février 2018 à 15:13
 -- Version du serveur :  5.7.10
 -- Version de PHP :  5.6.17
 
@@ -90,7 +90,7 @@ INSERT INTO `story_category` (`idStory`, `idCategory`) VALUES
 CREATE TABLE `story_readen_by_user` (
   `idUser` int(11) NOT NULL,
   `idStory` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE `user` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `mail` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Index pour les tables exportées
@@ -129,10 +129,18 @@ ALTER TABLE `story_category`
   ADD KEY `idCategoryForeignKey` (`idCategory`);
 
 --
+-- Index pour la table `story_readen_by_user`
+--
+ALTER TABLE `story_readen_by_user`
+  ADD KEY `idStoryForeignKey` (`idStory`) USING BTREE,
+  ADD KEY `idUserForeignKey` (`idUser`) USING BTREE;
+
+--
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -163,6 +171,13 @@ ALTER TABLE `user`
 ALTER TABLE `story_category`
   ADD CONSTRAINT `story_category_ibfk_1` FOREIGN KEY (`idStory`) REFERENCES `story` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `story_category_ibfk_2` FOREIGN KEY (`idCategory`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `story_readen_by_user`
+--
+ALTER TABLE `story_readen_by_user`
+  ADD CONSTRAINT `story_readen_by_user_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `story_readen_by_user_ibfk_2` FOREIGN KEY (`idStory`) REFERENCES `story` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
