@@ -7,7 +7,7 @@ class DetailsScreen extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
         <Button
-          title="Go to Home"
+          title="Go to Home Now"
           onPress={() => this.props.navigation.navigate('Home')}
         />
       </View>
