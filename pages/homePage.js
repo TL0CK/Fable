@@ -1,15 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+import ButtonStyleChoice from './../components/buttonStyleChoice'
+
+
 class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
+        <ButtonStyleChoice name='Epouvante' navigation={this.props.navigation}/>
+        <ButtonStyleChoice name='Aventure' navigation={this.props.navigation}/>
+        <ButtonStyleChoice name='Science-Fiction' navigation={this.props.navigation}/>
+        <ButtonStyleChoice name='Jeunesse' navigation={this.props.navigation}/>
+        <ButtonStyleChoice name='Erotique' navigation={this.props.navigation}/>
       </View>
     );
   }

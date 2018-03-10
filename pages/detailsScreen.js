@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-class DetailsScreen extends React.Component {
+class LengthChoice extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -15,4 +15,4 @@ class DetailsScreen extends React.Component {
   }
 }
 
-export default DetailsScreen;
+export default LengthChoice;
