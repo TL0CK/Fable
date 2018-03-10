@@ -6,12 +6,14 @@ import {
 } from 'react-navigation';
 
 import HomeScreen from './pages/homePage';
-import LengthChoice from './pages/detailsScreen';
+import LengthChoice from './pages/lengthChoice';
+import Story from './pages/story';
 
 const RootStack = StackNavigator(
   {
     Home: { screen: HomeScreen },
     Length: { screen: LengthChoice },
+    Story: { screen: Story },
   },
   {
     initialRouteName: 'Home',

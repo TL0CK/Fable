@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-import ButtonStyleChoice from './../components/buttonStyleChoice'
+import ButtonStyleChoice from './../components/buttonStyleChoice';
 
 
 class HomeScreen extends React.Component {
