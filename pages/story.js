@@ -2,7 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 class Story extends React.Component {
+  // Get the story's length
+  // return a string : S , M , L , XL
+  getStoryLength(){
+    return this.props.navigation.state.params.lengthStory;
+  }
+
+  // Get the style of our story
+  // return a string
+  getStoryStyle(){
+    return this.props.navigation.state.params.styleStoryVar;
+  }
+
+
   render() {
+    console.log(this.props.navigation.state.params.styleStoryVar);
+    console.log(this.props.navigation.state.params.lengthStory);
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       </View>

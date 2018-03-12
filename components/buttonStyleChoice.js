@@ -3,14 +3,22 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 class ButtonStyleChoice extends React.Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state={
+      styleStoryVar: this.props.styleStory
+    }
+  }
+
+  render () {
     return (
       <Button
-        title = {this.props.name}
-        onPress={() => this.props.navigation.navigate('Length')}
+        title = {this.props.styleStory}
+        onPress={() => this.props.navigation.navigate('Length', { styleStoryVar: this.state.styleStoryVar })}
       />
     );
   }
 }
+
 
 export default ButtonStyleChoice;
