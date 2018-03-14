@@ -8,7 +8,7 @@ class Story extends React.Component {
     return this.props.navigation.state.params.lengthStory;
   }
 
-  // Get the style of our story
+  // Get the story's style
   // return a string
   getStoryStyle(){
     return this.props.navigation.state.params.styleStoryVar;
