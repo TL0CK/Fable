@@ -10,8 +10,7 @@
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					
 			$db->query('SET NAMES UTF8');
-
-			$booksId = [];
+			
 			$sql = "SELECT title, text FROM story WHERE id = :id";
 			$response = $db->prepare($sql);
 			$response->bindValue(":id",$_GET['id'], PDO::PARAM_STR);
