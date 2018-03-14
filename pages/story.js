@@ -17,20 +17,25 @@ class Story extends React.Component {
   // Get the a list of id's using the category and length
   // return an array
   getStoriedListId(){
-    var lenght = getStoryLength();
-    var category = getStoryCategory();
+    var length = this.getStoryLength();
+    var category = this.getStoryCategory();
 
-    var listStories = /* GET REQUEST */'';
-    // je suis obligé de mettre des '' sinon le code js ne compile pas
-    // il faudra remplacer ça plus tard
-
+    var listStories = fetch('http://127.0.0.1/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category='+category+'&length='+length)
+                      .then((response) => response.json())
+                      .then((responseJson) => {
+                        return responseJson.storyId;
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                      });
+    console.log(listStories);
     return listStories;
   }
 
   // Get a random ID in the list of ID
   // return an int
   getRandomIdStory(){
-    var listStories = getStoriedListId();
+    var listStories = this.getStoriedListId();
     var randomId = listStories[Math.floor(Math.random()*listStories.length)];
 
     return randomId;
@@ -39,26 +44,32 @@ class Story extends React.Component {
   // Get story's text from the randomId we get earlier
   // return text
   getStoryText(){
-    var randomId = getRandomIdStory();
+    var randomId = this.getRandomIdStory();
 
-    var storyText = /* GET REQUEST */'';
-    // je suis obligé de mettre des '' sinon le code js ne compile pas
-    // il faudra remplacer ça plus tard
-
+    var storyText = fetch('http://127.0.0.1/edsa-fable/database/getStoryById.php?id='+randomId)
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                      return responseJson.Texte;
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                    });
+    console.log(storyText);
     return storyText;
   }
 
 
   render() {
+    this.getStoryText();
     console.log(this.props.navigation.state.params.categoryStory);
     console.log(this.props.navigation.state.params.lengthStory);
-    const url = `http://127.0.0.1/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=${this.props.navigation.state.params.categoryStory}&length=${this.props.navigation.state.params.lengthStory}`;
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>{url}</Text>
+        <Text></Text>
       </View>
     );
   }
 }
+
 
 export default Story;
