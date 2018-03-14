@@ -8,8 +8,8 @@ class ButtonLengthChoice extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      //styleStoryVar come from our ButtonStyleChoice component
-      styleStoryVar: this.props.navigation.state.params.styleStoryVar,
+      //categoryStory come from our ButtonStyleChoice component
+      categoryStory: this.props.navigation.state.params.categoryStory,
       lengthStory: this.props.length
     }
   }
@@ -18,7 +18,7 @@ class ButtonLengthChoice extends React.Component {
     return (
       <Button
         title = {this.props.name}
-        onPress={() => this.props.navigation.navigate('Story' , { styleStoryVar: this.state.styleStoryVar , lengthStory: this.state.lengthStory })}
+        onPress={() => this.props.navigation.navigate('Story' , { categoryStory: this.state.categoryStory , lengthStory: this.state.lengthStory })}
       />
     );
   }
