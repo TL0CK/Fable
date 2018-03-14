@@ -19,8 +19,8 @@
 					AND category.label = ':category'";
 					
 			$response = $db->prepare($sql);
-			$response->bindValue(":length", $_GET['category'], PDO::PARAM_STR);
-			$response->bindValue(":category", $_GET['length'], PDO::PARAM_STR);
+			$response->bindValue(":length", $_GET['length'], PDO::PARAM_STR);
+			$response->bindValue(":category", $_GET['category'], PDO::PARAM_STR);
 			$response->execute();
 			
 			while($datas = $response->fetch(PDO::FETCH_ASSOC))
