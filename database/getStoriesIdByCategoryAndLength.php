@@ -13,10 +13,10 @@
 			
 			$sql = "SELECT story.id AS storyId 
 					FROM story, story_category, category
-					WHERE story.length = ':length'
+					WHERE story.length = :length
 					AND story.id = story_category.idStory
 					AND story_category.idCategory = category.id
-					AND category.label = ':category'";
+					AND category.label = :category";
 					
 			$response = $db->prepare($sql);
 			$response->bindValue(":length", $_GET['length'], PDO::PARAM_STR);
