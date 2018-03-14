@@ -28,17 +28,17 @@
 				$storiesId[] = $datas['storyId'];
 			}
 			
+			$json = json_encode($storiesId);
+			
 			if(!empty($storiesId))
 			{
-				foreach($storiesId as $storyId)
-				{
-					echo "storyId : " . $storyId . "<br/>";
-				}
+				echo $json;
 			}
 			else
 			{
 				echo "No stories found";
 			}
+			
 			$response->closeCursor();
 		}
 		catch (Exception $e)

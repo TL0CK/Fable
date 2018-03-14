@@ -18,10 +18,8 @@
 			
 			if ($datas = $response->fetch(PDO::FETCH_ASSOC)) 
 			{
-				$storyTitle = $datas['title'];
-				$storyText = $datas['text'];
-				echo "Titre: " . $storyTitle . "<br/>";
-				echo "Texte: " . $storyText;
+				$json = json_encode($datas);
+				echo $json;
 			} 
 			else
 			{
