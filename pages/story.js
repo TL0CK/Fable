@@ -52,8 +52,10 @@ class Story extends React.Component {
   render() {
     console.log(this.props.navigation.state.params.categoryStory);
     console.log(this.props.navigation.state.params.lengthStory);
+    const url = `http://127.0.0.1/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=${this.props.navigation.state.params.categoryStory}&length=${this.props.navigation.state.params.lengthStory}`;
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>{url}</Text>
       </View>
     );
   }
