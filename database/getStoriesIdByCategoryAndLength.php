@@ -25,14 +25,15 @@
 			
 			while($datas = $response->fetch(PDO::FETCH_ASSOC))
 			{
-				$storiesId[] = $datas['storyId'];
+				$storiesId[] = json_encode($datas);
 			}
-			
-			$json = json_encode($storiesId);
 			
 			if(!empty($storiesId))
 			{
-				echo $json;
+				foreach($storiesId as $storyId)
+				{
+					echo $storyId;
+				}
 			}
 			else
 			{
