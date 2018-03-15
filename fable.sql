@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 28 Février 2018 à 15:13
+-- Généré le :  Jeu 15 Mars 2018 à 15:34
 -- Version du serveur :  5.7.10
 -- Version de PHP :  5.6.17
 
@@ -36,12 +36,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `label`) VALUES
-(1, 'Normal books'),
-(2, 'epouvante'),
-(3, 'fantastique'),
-(4, 'jeunesse'),
-(5, 'aventure'),
-(6, 'erotique');
+(1, 'horror'),
+(2, 'adventure'),
+(3, 'scifi'),
+(4, 'teen'),
+(5, 'adult');
 
 -- --------------------------------------------------------
 
@@ -61,7 +60,8 @@ CREATE TABLE `story` (
 --
 
 INSERT INTO `story` (`id`, `title`, `length`, `text`) VALUES
-(1, 'Best book ever', 'short', 'This is the best book ever. This is the beginning. This is like the middle of the story. Go on, we\'re almost done. Tada, this is the end, you\'ve made it this far.');
+(1, 'Best book ever', 'S', 'This is the best book ever. This is the beginning. This is like the middle of the story. Go on, we\'re almost done. Tada, this is the end, you\'ve made it this far.'),
+(2, 'Titre inconnu', 'M', 'BlaBla');
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,8 @@ CREATE TABLE `story_category` (
 --
 
 INSERT INTO `story_category` (`idStory`, `idCategory`) VALUES
-(1, 1);
+(1, 1),
+(2, 3);
 
 -- --------------------------------------------------------
 
@@ -155,7 +156,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `story`
 --
 ALTER TABLE `story`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
