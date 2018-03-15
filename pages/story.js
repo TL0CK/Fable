@@ -20,49 +20,63 @@ class Story extends React.Component {
     var length = this.getStoryLength();
     var category = this.getStoryCategory();
 
-    var listStories = fetch('http://127.0.0.1/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category='+category+'&length='+length)
-                      .then((response) => response.json())
-                      .then((responseJson) => {
-                        return responseJson.storyId;
+    var url = `http://192.168.1.19:80/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=`+category+`&length=`+length;
+
+    var listStories = fetch(url)
+                      .then(function(response){
+                        return response.json();
+                      })
+                      .then(function(data) {
+                        return data.storyId;
                       })
                       .catch((error) => {
                         console.error(error);
                       });
-    console.log(listStories);
+
     return listStories;
   }
 
   // Get a random ID in the list of ID
   // return an int
   getRandomIdStory(){
-    var listStories = this.getStoriedListId();
-    var randomId = listStories[Math.floor(Math.random()*listStories.length)];
-
+    var randomId = this.getStoriedListId()
+                  .then(function(data){
+                    console.log("la liste d'id est : " + data);
+                    var randomId = data[Math.floor(Math.random()*data.length)];
+                    return randomId;
+                  });
     return randomId;
   }
 
   // Get story's text from the randomId we get earlier
   // return text
   getStoryText(){
-    var randomId = this.getRandomIdStory();
+    var text = this.getRandomIdStory()
+                  .then(function(data){
+                    var url = `http://192.168.1.19:80/edsa-fable/database/getStoryById.php?id=`+data;
 
-    var storyText = fetch('http://127.0.0.1/edsa-fable/database/getStoryById.php?id='+randomId)
-                    .then((response) => response.json())
-                    .then((responseJson) => {
-                      return responseJson.Texte;
-                    })
-                    .catch((error) => {
-                      console.error(error);
-                    });
-    console.log(storyText);
-    return storyText;
+                    var storyText = fetch(url)
+                                    .then(function(response) {
+                                      return response.json();
+                                    })
+                                    .then(function(data) {
+                                      return data.text;
+                                    })
+                                    .catch((error) => {
+                                      console.error(error);
+                                    });
+                    return storyText;
+                  })
+    return text;
   }
 
 
   render() {
-    this.getStoryText();
-    console.log(this.props.navigation.state.params.categoryStory);
-    console.log(this.props.navigation.state.params.lengthStory);
+    var textStory = this.getStoryText()
+                    .then(function(data){
+                      // Ce console log nous donne bien le corps du texte !!!!!!!!
+                      console.log(data);
+                    });
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text></Text>
