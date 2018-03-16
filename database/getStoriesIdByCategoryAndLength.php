@@ -30,10 +30,16 @@
 			
 			if(!empty($storiesId))
 			{
-				foreach($storiesId as $storyId)
+				echo "[";
+				for ($i = 0; $i < sizeof($storiesId); $i++) 
 				{
-					echo $storyId;
+					echo $storiesId[$i];
+					if($i < sizeof($storiesId) - 1)
+					{
+						echo ",";
+					}
 				}
+				echo "]";
 			}
 			else
 			{
