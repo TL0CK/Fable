@@ -20,14 +20,14 @@ class Story extends React.Component {
     var length = this.getStoryLength();
     var category = this.getStoryCategory();
 
-    var url = `http://192.168.1.19:80/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=`+category+`&length=`+length;
+    var url = `http://192.168.43.47:80/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=`+category+`&length=`+length;
 
     var listStories = fetch(url)
                       .then(function(response){
                         return response.json();
                       })
                       .then(function(data) {
-                        return data.storyId;
+                        return data.storiesId;
                       })
                       .catch((error) => {
                         console.error(error);
@@ -53,7 +53,7 @@ class Story extends React.Component {
   getStoryText(){
     var text = this.getRandomIdStory()
                   .then(function(data){
-                    var url = `http://192.168.1.19:80/edsa-fable/database/getStoryById.php?id=`+data;
+                    var url = `http://192.168.43.47:80/edsa-fable/database/getStoryById.php?id=`+data;
 
                     var storyText = fetch(url)
                                     .then(function(response) {

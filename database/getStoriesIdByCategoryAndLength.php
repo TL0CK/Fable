@@ -25,21 +25,21 @@
 			
 			while($datas = $response->fetch(PDO::FETCH_ASSOC))
 			{
-				$storiesId[] = json_encode($datas);
+				$storiesId[] = $datas["storyId"];
 			}
 			
 			if(!empty($storiesId))
 			{
-				echo "[";
+				echo '{ "storiesId" : [';
 				for ($i = 0; $i < sizeof($storiesId); $i++) 
 				{
-					echo $storiesId[$i];
+					echo '"' . $storiesId[$i] . '"';
 					if($i < sizeof($storiesId) - 1)
 					{
 						echo ",";
 					}
 				}
-				echo "]";
+				echo "]}";
 			}
 			else
 			{
