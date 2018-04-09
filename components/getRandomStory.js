@@ -8,15 +8,13 @@ class GetRandomStory extends React.Component {
     super(props);
     this.state={
       RandomStoryId: '',
+      loading: true,
       lengthStory: this.props.StoryLength,
       categoryStory: this.props.StoryCategory
     }
   }
 
-  // Get the a list of id's using the category and length
-  // get a random ID in list
-  // return an int
-  componentWillMount() {
+  componentDidMount() {
     var that = this;
     var length = this.state.lengthStory;
     var category = this.state.categoryStory;
@@ -26,8 +24,6 @@ class GetRandomStory extends React.Component {
 
 
     var url = `http://192.168.1.19:80/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=`+category+`&length=`+length;
-
-    console.log(url);
 
     fetch(url)
     .then(function(response) {
@@ -39,15 +35,22 @@ class GetRandomStory extends React.Component {
     .then(function(data) {
       console.log("la liste d'id est : " + data.storiesId);
       that.setState({ RandomStoryId: data.storiesId[Math.floor(Math.random()*data.storiesId.length)] });
+      that.setState({ loading: false });
     });
   }
 
-
   render() {
-    console.log(this.state.RandomStoryId)
-    return (
-      <GetStoryText RandomId='2' /> //{this.state.RandomStoryId}
-    );
+    const isLoading = this.state.loading;
+    if (isLoading){
+      return (
+        <Text>Loading</Text>
+      );
+    }
+    else{
+      return (
+        <GetStoryText RandomId={this.state.RandomStoryId}/>
+      );
+    }
   }
 }
 

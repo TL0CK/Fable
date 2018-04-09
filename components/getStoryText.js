@@ -6,21 +6,19 @@ class GetStoryText extends React.Component {
     super(props);
     this.state={
       text : '',
+      loading: true,
       RandomId: this.props.RandomId
     }
   }
 
-  // Get story's text from the randomId we get earlier
-  // return text
-  componentDidMount() {
+  componentWillMount() {
+
     var that = this;
     var randomId = this.state.RandomId;
 
     console.log("randomId : " + randomId);
 
     var url = `http://192.168.1.19:80/edsa-fable/database/getStoryById.php?id=`+randomId;
-
-    console.log("url : " + url);
 
     fetch(url)
     .then(function(response) {
@@ -31,16 +29,24 @@ class GetStoryText extends React.Component {
     })
     .then(function(data) {
       that.setState({ text: data.text.toString() });
+      that.setState({ loading: false });
     });
   }
 
-
   render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>{this.state.text}</Text>
-      </View>
-    );
+    const isLoading = this.state.loading;
+    if (isLoading){
+      return (
+        <Text>Loading</Text>
+      );
+    }
+    else{
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text>{this.state.text}</Text>
+        </View>
+      );
+    }
   }
 }
 
