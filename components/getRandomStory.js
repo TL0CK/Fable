@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 import GetStoryText from './../components/getStoryText';
+import LoadingScreen from './../components/loadingScreen';
 
 class GetRandomStory extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class GetRandomStory extends React.Component {
     const isLoading = this.state.loading;
     if (isLoading){
       return (
-        <Text>Loading</Text>
+        <LoadingScreen/>
       );
     }
     else{

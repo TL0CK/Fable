@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+import LoadingScreen from './../components/loadingScreen';
+
 class GetStoryText extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +39,7 @@ class GetStoryText extends React.Component {
     const isLoading = this.state.loading;
     if (isLoading){
       return (
-        <Text>Loading</Text>
+        <LoadingScreen/>
       );
     }
     else{
