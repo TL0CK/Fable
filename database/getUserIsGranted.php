@@ -11,7 +11,7 @@
 					
 			$db->query('SET NAMES UTF8');
 			
-			$sql = "SELECT id FROM user WHERE username = :username AND password = :password LIMIT 1";
+			$sql = "SELECT id, username FROM user WHERE username = :username AND password = :password LIMIT 1";
 			$response = $db->prepare($sql);
 			$response->bindValue(":username",$_POST['username'], PDO::PARAM_STR);
 			$response->bindValue(":password",$_POST['password'], PDO::PARAM_STR);
