@@ -87,7 +87,13 @@ export default class Login extends Component {
     }
     else{
       return(
-        <HomeScreen/>
+        <Button
+          onPress={() => {
+            this.props.navigation.navigate('Home');
+          }}
+          title="Bienvenue"
+        />
+
       );
     }
   }
