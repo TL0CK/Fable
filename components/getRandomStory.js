@@ -24,7 +24,8 @@ class GetRandomStory extends React.Component {
     console.log("category : " + category);
 
 
-    var url = `http://192.168.1.19:80/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=`+category+`&length=`+length;
+    //var url = `http://192.168.1.19:80/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=`+category+`&length=`+length;
+    var url = `http://192.168.1.74:80/edsa-fable/database/getStoriesIdByCategoryAndLength.php?category=`+category+`&length=`+length;
 
     fetch(url)
     .then(function(response) {
