@@ -20,8 +20,8 @@ class GetStoryText extends React.Component {
 
     console.log("randomId : " + randomId);
 
-    //var url = `http://192.168.1.19:80/edsa-fable/database/getStoryById.php?id=`+randomId;
-    var url = `http://192.168.1.74:80/edsa-fable/database/getStoryById.php?id=`+randomId;
+    var url = `http://192.168.1.19:80/edsa-fable/database/getStoryById.php?id=`+randomId;
+    //var url = `http://192.168.1.74:80/edsa-fable/database/getStoryById.php?id=`+randomId;
 
     fetch(url)
     .then(function(response) {

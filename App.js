@@ -8,15 +8,17 @@ import {
 import HomeScreen from './pages/homePage';
 import LengthChoice from './pages/lengthChoice';
 import Story from './pages/story';
+import Login from './pages/loginPage';
 
 const RootStack = StackNavigator(
   {
+    Login: { screen: Login },
     Home: { screen: HomeScreen },
     Length: { screen: LengthChoice },
     Story: { screen: Story },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
   }
 );
 
